@@ -6,7 +6,7 @@
 - [github repository](https://github.com/rkrug/IPBES_BaB_Ch4-Snowball_Pilot_1)
 - Contact Persons:
     - <clement.feger@agroparistech.fr>
-- CC
+- CC:
     <francesca.verones@ntnu.no>
     <stephan.pfister@ifu.baug.ethz.ch>
     <renske.gudde@senckenberg.de>
