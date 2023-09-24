@@ -1,0 +1,165 @@
+---
+title: "Business and Biopdiversity - Ch 4 - Snowball Pilot"
+format:
+    html:
+        toc: true
+        toc-depth: 2
+        embed-resources: true
+        code-fold: true
+        code-summary: "Show the code"
+    docx:
+        toc: true
+        toc-depth: 2
+        number-sections: true
+        highlight-style: github
+    pdf:
+        toc: true
+        toc-depth: 2
+        number-sections: true
+---
+
+# Setup
+```{r}
+#| label: setup
+#|
+
+# library(bibtex)
+library(openalexR)
+library(writexl)
+library(tibble)
+library(dplyr)
+library(ggplot2)
+library(ggraph)
+library(tidygraph)
+
+library(knitr)
+
+list.files(
+    "R",
+    full.names = TRUE,
+    recursive = TRUE
+) |>
+    sapply(
+        FUN <- source
+    )
+
+
+kp <- read.csv(file.path("Key Papers", "Ch 4 - Snowball Pilot.csv"))
+```
+
+# Searches
+
+## OpenAlex
+
+### Setup OpelAnex usage and do snowball serarch
+
+```{r}
+#| label: openalex_prep
+#|
+
+key_works <- oa_fetch(
+    entity = "works",
+    doi = kp$DOI,
+    verbose = FALSE
+)
+
+
+
+saveRDS(key_works, file.path("data", "key_works.rds"))
+
+ids <- openalexR:::shorten_oaid(key_works$id)
+
+fn <- file.path(".", "data", "snowball.rds")
+if (file.exists(fn)) {
+    snowball <- readRDS(fn)
+} else {
+    snowball <- oa_snowball(
+        identifier = ids,
+        verbose = FALSE
+    )
+    saveRDS(snowball, fn)
+}
+
+flat_snow <- snowball2df(snowball) |>
+    as_tibble()
+```
+
+### Save snowball as Excel file (`snowball_excel.xlsx`)
+
+```{r}
+#| label: openalex_excel
+#|
+
+###
+
+fn <- file.path(".", "data", "snowball.xlsx")
+to_xlsx(
+    snowball = snowball,
+    flat_snow = flat_snow,
+    xls_filename = fn
+)
+```
+
+The column are: (the Concept columns are not that relevant at the moment)
+
+- **id**: internal id fromOpenAlex
+- **author**: authors of the paper
+- **publication_year**: publication year
+- **title**: title of the paper
+- **doi**: doi of the paper
+- **no_referenced_works**: number of references in the paper which are also in OpenAlex
+- **cited_global**: Number of times the paper has been cited
+- **cited_global_per_year**: standardised  number of times cirted (cited_global / number of years published)
+- **no_connections**: number of connections in the rgaph, i.e. either cited or citing a paper in the snowball corpus
+- **concepts_l0**: Concept 0. level assigned by OpenAlex
+- **concepts_l1**: Concept 1. level assigned by OpenAlex
+- **concepts_l2**: Concept 2. level assigned by OpenAlex
+- **concepts_l3**: Concept 3. level assigned by OpenAlex
+- **concepts_l4**: Concept 4. level assigned by OpenAlex
+- **concepts_l5**: Concept 5. level assigned by OpenAlex
+- **author_institute**: Institute of the authors
+- **institute_country**: Country of the institute
+- **abstract**: the abstract of the paper
+
+
+### Graph of links between references
+
+```{r}
+#| label: openalex_graph
+#|
+plot_snowball(
+    snowball,
+    name = "Snowball Pilot"
+)
+```
+
+### Identification of references with more than one edge
+
+This is the number of connections (`connection_count)`of the paper (`id`)
+
+```{r}
+#| label: openalex_edgecount
+#|
+mult_edge <- flat_snow |>
+    select(id, connection_count) |>
+    filter(connection_count > 1) |>
+    arrange(desc(connection_count))
+
+links <- flat_snow |>
+    filter(id %in% mult_edge$id)
+
+links |>
+    select(id, display_name, publication_year, doi, connection_count) |>
+    arrange(desc(connection_count)) |>
+    knitr::kable()
+```
+
+
+
+# Finalize
+To convert to pdf run e.g.
+
+```{bash}
+#| eval: false
+    wkhtmltopdf snowball.html snowball.pdf
+```
