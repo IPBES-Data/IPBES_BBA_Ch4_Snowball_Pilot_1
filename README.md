@@ -7,10 +7,10 @@
 - Contact Persons:
     - <clement.feger@agroparistech.fr>
 - CC:
-    <francesca.verones@ntnu.no>
-    <stephan.pfister@ifu.baug.ethz.ch>
-    <renske.gudde@senckenberg.de>
-    <aidin.niamir@senckenberg.de>
+    - <francesca.verones@ntnu.no>
+    - <stephan.pfister@ifu.baug.ethz.ch>
+    - <renske.gudde@senckenberg.de>
+    - <aidin.niamir@senckenberg.de>
 
 ## Folders
 
