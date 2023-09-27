@@ -1,16 +1,39 @@
+[![DOI](https://zenodo.org/badge/DOI/99.9999/zenodo.9999999.svg)](https://doi.org/99.9999/zenodo.9999999)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 # Business and Biodiversity - Ch 4 - Snowball Pilot
+This repository is part of an ongoing IPBES project.
+
+The authors do not take any responsibility for it's copntent or the correct working of the code. If scripts in here wipe your data, you are on your own.
+
+Nevertheless, please feel free to browse the code and re-use it at your own risk.
+
+Once finalised, the final repo will be published on Zenodo
 
 ## Metadata
 
-- [Google Drive](https://drive.google.com/drive/folders/12pNDoJEZFdjXgg6xh6c8INwdLUI-_Okw?usp=share_link)
-- [github repository](https://github.com/rkrug/IPBES_BaB_Ch4-Snowball_Pilot_1)
-- Contact Persons:
-    - <clement.feger@agroparistech.fr>
-- CC:
-    - <francesca.verones@ntnu.no>
-    - <stephan.pfister@ifu.baug.ethz.ch>
-    - <renske.gudde@senckenberg.de>
-    - <aidin.niamir@senckenberg.de>
+- **Project name**: Business and Biodiversity - Ch 4 - Snowball Pilot
+- **Assessment**: %Business and Biodiversity
+- **Chapter**: Ch 4
+- **Short Name**: IPBES_BBA
+
+- **Status**: %STATUS% (e.g. in planning, in progress, completed, canceled, waiting for response etc.)
+
+- **Assigned To**: Rainer <Rainer.Krug@Senckenberg.de> <Rainer@krugs.de>
+
+- **email to**:
+  - <clement.feger@agroparistech.fr>
+  - ...
+- **email cc**:
+  - <tsu.bizbiodiversity@gmail.com>
+  - <francesca.verones@ntnu.no>
+  - <stephan.pfister@ifu.baug.ethz.ch>
+  - <renske.gudde@senckenberg.de>
+  - <aidin.niamir@senckenberg.de>
+  - ...
+
+- **Github Repo**: [[github repository](https://github.com/rkrug/IPBES_BBA_Ch4-Snowball_Pilot_1)
+- **Googl Drive Folder**: [GooglDrive](<https://drive.google.com/drive/folders/12pNDoJEZFdjXgg6xh6c8INwdLUI-_Okw?usp=share_link>)
 
 ## Folders
 
@@ -32,3 +55,7 @@
   - [ ] extracting all links to websites?
 
 It is not possible to identify papers citing the report, unless the report is in the database, i.e. for the moment OpenAlex, which they are not.
+
+## Reports
+
+- [initial snowballing](snowball.html)

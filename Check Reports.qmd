@@ -1,0 +1,53 @@
+---
+title: "Business and Biopdiversity - Ch 4 - Snowball Pilot"
+author: Rainer M Krug <Rainer.Krug@senckenberg.de> <Rainer@krugs.de>
+format:
+    html:
+        toc: true
+        toc-depth: 2
+        embed-resources: true
+        code-fold: true
+        code-summary: "Show the code"
+    docx:
+        toc: true
+        toc-depth: 2
+        number-sections: true
+        highlight-style: github
+    pdf:
+        toc: true
+        toc-depth: 2
+        number-sections: true
+---
+
+# Setup
+```{r}
+#| label: setup
+#|
+
+# library(bibtex)
+library(openalexR)
+library(writexl)
+library(tibble)
+library(dplyr)
+library(ggplot2)
+library(ggraph)
+library(tidygraph)
+
+library(knitr)
+```
+
+```{r setup, include=FALSE}
+
+title <- "Accounting for Ecosystem Services in Life Cycle Assessment, Part I: A Critical Review"
+title <- "value accounting methods"
+oa_fetch(
+  "works",
+  title_search = title,
+  options = list(sample = 25)
+)
+
+
+x <- openalexR::oa_query(filter = c(title.search = paste0("'", title, "'"))) |>
+    openalexR::oa_request(count_only = FALSE)
+```
+
