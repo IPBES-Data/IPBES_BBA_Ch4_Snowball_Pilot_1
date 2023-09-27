@@ -26,4 +26,9 @@
 - [x] `snowball.html` report created and data files and figures created
 
 ### TODO
+
 - [ ] What to do with the reports?
+  - [ ] extracting references manually?
+  - [ ] extracting all links to websites?
+
+It is not possible to identify papers citing the report, unless the report is in the database, i.e. for the moment OpenAlex, which they are not.

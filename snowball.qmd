@@ -1,5 +1,6 @@
 ---
 title: "Business and Biopdiversity - Ch 4 - Snowball Pilot"
+author: Rainer M Krug <Rainer.Krug@senckenberg.de> <Rainer@krugs.de>
 format:
     html:
         toc: true
