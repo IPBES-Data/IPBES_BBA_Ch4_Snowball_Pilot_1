@@ -17,7 +17,7 @@ Once finalised, the final repo will be published on Zenodo
 - **Chapter**: Ch 4
 - **Short Name**: IPBES_BBA
 
-- **Status**: %STATUS% (e.g. in planning, in progress, completed, canceled, waiting for response etc.)
+- **Status**: waiting for response and way forward
 
 - **Assigned To**: Rainer <Rainer.Krug@Senckenberg.de> <Rainer@krugs.de>
 
@@ -32,8 +32,8 @@ Once finalised, the final repo will be published on Zenodo
   - <aidin.niamir@senckenberg.de>
   - ...
 
-- **Github Repo**: [[github repository](https://github.com/rkrug/IPBES_BBA_Ch4-Snowball_Pilot_1)
-- **Googl Drive Folder**: [GooglDrive](<https://drive.google.com/drive/folders/12pNDoJEZFdjXgg6xh6c8INwdLUI-_Okw?usp=share_link>)
+- **Github Repo**: [github repository](https://github.com/rkrug/IPBES_BBA_Ch4_Snowball_Pilot_1)
+- **Googl Drive Folder**: [Google Drive](<https://drive.google.com/drive/folders/12pNDoJEZFdjXgg6xh6c8INwdLUI-_Okw?usp=share_link>)
 
 ## Folders
 

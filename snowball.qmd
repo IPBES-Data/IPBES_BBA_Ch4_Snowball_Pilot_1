@@ -8,15 +8,6 @@ format:
         embed-resources: true
         code-fold: true
         code-summary: "Show the code"
-    docx:
-        toc: true
-        toc-depth: 2
-        number-sections: true
-        highlight-style: github
-    pdf:
-        toc: true
-        toc-depth: 2
-        number-sections: true
 ---
 
 # Setup
@@ -47,6 +38,8 @@ list.files(
 
 kp <- read.csv(file.path("Key Papers", "Ch 4 - Snowball Pilot.csv"))
 ```
+
+# Back to [Readme](https://rkrug.github.io/IPBES_BBA_Ch4_Snowball_Pilot_1/)
 
 # Searches
 
@@ -153,14 +146,4 @@ links |>
     select(id, display_name, publication_year, doi, connection_count) |>
     arrange(desc(connection_count)) |>
     knitr::kable()
-```
-
-
-
-# Finalize
-To convert to pdf run e.g.
-
-```{bash}
-#| eval: false
-    wkhtmltopdf snowball.html snowball.pdf
 ```
