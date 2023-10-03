@@ -19,17 +19,19 @@ Once finalised, the final repo will be published on Zenodo
 
 - **Status**: waiting for response and way forward
 
-- **Assigned To**: Rainer <Rainer.Krug@Senckenberg.de> <Rainer@krugs.de>
+- **Assigned To**: 
+  - Rainer <Rainer.Krug@Senckenberg.de> <Rainer@krugs.de>
 
 - **email to**:
-  - <clement.feger@agroparistech.fr>
-  - ...
+  - LA <clement.feger@agroparistech.fr>
+  - TSU Data <Rainer.Krug@Senckenberg.de>
+
 - **email cc**:
-  - <tsu.bizbiodiversity@gmail.com>
-  - <francesca.verones@ntnu.no>
-  - <stephan.pfister@ifu.baug.ethz.ch>
-  - <renske.gudde@senckenberg.de>
-  - <aidin.niamir@senckenberg.de>
+  - LA <francesca.verones@ntnu.no>
+  - LA <stephan.pfister@ifu.baug.ethz.ch>
+  - TSU BBA <tsu.bizbiodiversity@gmail.com>
+  - TSU Data <renske.gudde@senckenberg.de>
+  - TSU Data <aidin.niamir@senckenberg.de>
   - ...
 
 - **Github Repo**: [github repository](https://github.com/rkrug/IPBES_BBA_Ch4_Snowball_Pilot_1)
