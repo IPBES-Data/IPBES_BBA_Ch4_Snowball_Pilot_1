@@ -13,9 +13,9 @@ Once finalised, the final repo will be published on Zenodo
 ## Metadata
 
 - **Project name**: Business and Biodiversity - Ch 4 - Snowball Pilot
-- **Assessment**: %Business and Biodiversity
+- **Assessment**: Business and Biodiversity
 - **Chapter**: Ch 4
-- **Short Name**: IPBES_BBA
+- **Short Name**: IPBES_BBA_Ch4_Snowball_Pilot_1
 
 - **Status**: waiting for response and way forward
 
