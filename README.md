@@ -19,7 +19,7 @@ Once finalised, the final repo will be published on Zenodo
 
 - **Status**: waiting for response and way forward
 
-- **Assigned To**: 
+- **Assigned To**:
   - Rainer <Rainer.Krug@Senckenberg.de> <Rainer@krugs.de>
 
 - **email to**:
@@ -49,14 +49,14 @@ Once finalised, the final repo will be published on Zenodo
 - [x] Kepypaper were imported into Zotero and the `csv` and `bib` files were exported
 - [x] `snowball.qmd` report file was created and the `R` scripts added
 - [x] `snowball.html` report created and data files and figures created
+- [ ] literature search will be done for two clusters
+  - [ ] **authors** will provide key papers fand suggestions for possible additional search strateies to get the literature
+  - [ ] citation clusters will be build for each and shown separately and combined
+- [ ] Integrate reports into citation network
+  - [ ] **Aidin** will investigate identification of link networks on the internet starting from identified reports
+  - [ ] **Rainer** will investigate the possibility to use the `R` package `scholar` to identify papers citing the reports
+  - [ ] **Rainer** will assess if the references can be extracted from the reports provided
 
-### TODO
-
-- [ ] What to do with the reports?
-  - [ ] extracting references manually?
-  - [ ] extracting all links to websites?
-
-It is not possible to identify papers citing the report, unless the report is in the database, i.e. for the moment OpenAlex, which they are not.
 
 ## Reports
 
