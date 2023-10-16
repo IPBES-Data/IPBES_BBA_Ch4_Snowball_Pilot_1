@@ -15,8 +15,8 @@ Once finalised, the final repo will be published on Zenodo
 - **Project name**: Business and Biodiversity - Ch 4 - Snowball Pilot
 - **Assessment**: Business and Biodiversity
 - **Chapter**: Ch 4
-- **Short Name**: IPBES_BBA_Ch4_Snowball_Pilot_1
-
+- **Short Name**: `IPBES_BBA_Ch4_Snowball_Pilot_1`   
+  Please always include `IPBES_BBA_Ch4_Snowball_Pilot_1` in the title of the email to make sure it gets filtered correctly.
 - **Status**: waiting for response and way forward
 
 - **Assigned To**:
@@ -45,7 +45,6 @@ Once finalised, the final repo will be published on Zenodo
 - **`R`**: R scripts used to create the figures and tables in the `snowball.qmd` file. Files in this folder will be sourced initially. These will later be moved into an R package.
 
 ## Status
-### Done
 - [x] Kepypaper were imported into Zotero and the `csv` and `bib` files were exported
 - [x] `snowball.qmd` report file was created and the `R` scripts added
 - [x] `snowball.html` report created and data files and figures created
