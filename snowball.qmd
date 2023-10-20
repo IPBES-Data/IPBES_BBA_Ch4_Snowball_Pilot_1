@@ -44,7 +44,7 @@ list.files(
 kp <- read.csv(file.path("Key Papers", params$key_paper))
 ```
 
-# Back to [Readme](https://rkrug.github.io/IPBES_BBA_Ch4_Snowball_Pilot_1/)
+# Back to [Readme](https://IPBES-Data.github.io/IPBES_BBA_Ch4_Snowball_Pilot_1/)
 
 # Searches
 
