@@ -8,12 +8,17 @@ format:
         embed-resources: true
         code-fold: true
         code-summary: "Show the code"
+params:
+    key_paper: "Updated paper list snowballing.csv"
 ---
 
 # Setup
 ```{r}
 #| label: setup
 #|
+if (!exists("params")) {
+    params <- rmarkdown::yaml_front_matter("~/Documents_Local/git/IPBES_data_tsu/Assessments/Business/IPBES_BBA_Ch4-Snowball_Pilot_1/snowball.qmd")$params
+}
 
 # library(bibtex)
 library(openalexR)
@@ -36,7 +41,7 @@ list.files(
     )
 
 
-kp <- read.csv(file.path("Key Papers", "Ch 4 - Snowball Pilot.csv"))
+kp <- read.csv(file.path("Key Papers", params$key_paper))
 ```
 
 # Back to [Readme](https://rkrug.github.io/IPBES_BBA_Ch4_Snowball_Pilot_1/)
@@ -51,15 +56,18 @@ kp <- read.csv(file.path("Key Papers", "Ch 4 - Snowball Pilot.csv"))
 #| label: openalex_prep
 #|
 
-key_works <- oa_fetch(
-    entity = "works",
-    doi = kp$DOI,
-    verbose = FALSE
-)
+fn <- file.path("data", "key_works.rds")
+if (file.exists(fn)) {
+    key_works <- readRDS(fn)
+} else {
+    key_works <- oa_fetch(
+        entity = "works",
+        doi = kp$DOI,
+        verbose = FALSE
+    )
+    saveRDS(key_works, fn)
+}
 
-
-
-saveRDS(key_works, file.path("data", "key_works.rds"))
 
 ids <- openalexR:::shorten_oaid(key_works$id)
 

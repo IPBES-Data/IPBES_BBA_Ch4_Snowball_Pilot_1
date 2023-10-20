@@ -1,7 +1,9 @@
+# Business and Biodiversity - Ch 4 - Snowball Pilot
+
 [![DOI](https://zenodo.org/badge/DOI/99.9999/zenodo.9999999.svg)](https://doi.org/99.9999/zenodo.9999999)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-# Business and Biodiversity - Ch 4 - Snowball Pilot
+
 This repository is part of an ongoing IPBES project.
 
 The authors do not take any responsibility for it's copntent or the correct working of the code. If scripts in here wipe your data, you are on your own.
@@ -15,7 +17,7 @@ Once finalised, the final repo will be published on Zenodo
 - **Project name**: Business and Biodiversity - Ch 4 - Snowball Pilot
 - **Assessment**: Business and Biodiversity
 - **Chapter**: Ch 4
-- **Short Name**: `IPBES_BBA_Ch4_Snowball_Pilot_1`   
+- **Short Name**: `IPBES_BBA_Ch4_Snowball_Pilot_1`
   Please always include `IPBES_BBA_Ch4_Snowball_Pilot_1` in the title of the email to make sure it gets filtered correctly.
 - **Status**: waiting for response and way forward
 
@@ -45,6 +47,7 @@ Once finalised, the final repo will be published on Zenodo
 - **`R`**: R scripts used to create the figures and tables in the `snowball.qmd` file. Files in this folder will be sourced initially. These will later be moved into an R package.
 
 ## Status
+
 - [x] Kepypaper were imported into Zotero and the `csv` and `bib` files were exported
 - [x] `snowball.qmd` report file was created and the `R` scripts added
 - [x] `snowball.html` report created and data files and figures created
@@ -55,7 +58,6 @@ Once finalised, the final repo will be published on Zenodo
   - [ ] **Aidin** will investigate identification of link networks on the internet starting from identified reports
   - [ ] **Rainer** will investigate the possibility to use the `R` package `scholar` to identify papers citing the reports
   - [ ] **Rainer** will assess if the references can be extracted from the reports provided
-
 
 ## Reports
 
