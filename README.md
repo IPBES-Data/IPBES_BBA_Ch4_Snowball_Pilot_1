@@ -36,7 +36,7 @@ Once finalised, the final repo will be published on Zenodo
   - TSU Data <aidin.niamir@senckenberg.de>
   - ...
 
-- **Github Repo**: [github repository](https://github.com/rkrug/IPBES_BBA_Ch4_Snowball_Pilot_1)
+- **Github Repo**: [github repository](https://github.com/rkrugIPBES-Data/IPBES_BBA_Ch4_Snowball_Pilot_1)
 - **Googl Drive Folder**: [Google Drive](<https://drive.google.com/drive/folders/12pNDoJEZFdjXgg6xh6c8INwdLUI-_Okw?usp=share_link>)
 
 ## Folders
