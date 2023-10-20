@@ -95,11 +95,13 @@ flat_snow <- snowball2df(snowball) |>
 ###
 
 fn <- file.path(".", "data", "snowball.xlsx")
-to_xlsx(
-    snowball = snowball,
-    flat_snow = flat_snow,
-    xls_filename = fn
-)
+if (!file.exists(fn)) {
+    to_xlsx(
+        snowball = snowball,
+        flat_snow = flat_snow,
+        xls_filename = fn
+    )
+}
 ```
 
 The column are: (the Concept columns are not that relevant at the moment)
@@ -128,12 +130,17 @@ The column are: (the Concept columns are not that relevant at the moment)
 
 ```{r}
 #| label: openalex_graph
-#|
-plot_snowball(
-    snowball,
-    name = "Snowball Pilot"
-)
+
+if ((list.files("figures") |> length()) < 4) {
+    x <- plot_snowball(
+        snowball,
+        name = "Snowball Pilot"
+    )
+}
 ```
+
+![](figures/Snowball Pilot_cited_by_count_by_year.png)
+[Right click - Download for (better quality)](figures/Snowball Pilot_cited_by_count_by_year.pdf)
 
 ### Identification of references with more than one edge
 
