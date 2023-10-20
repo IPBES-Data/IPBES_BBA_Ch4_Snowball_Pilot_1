@@ -103,6 +103,7 @@ if (!file.exists(fn)) {
     )
 }
 ```
+[To download Excel file click here](data/snowball.xlsx)
 
 The column are: (the Concept columns are not that relevant at the moment)
 
