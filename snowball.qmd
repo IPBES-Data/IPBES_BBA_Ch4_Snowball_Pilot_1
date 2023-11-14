@@ -9,7 +9,7 @@ format:
         code-fold: true
         code-summary: "Show the code"
 params:
-    key_paper: "Updated paper list snowballing.csv"
+    key_paper: "v2 Clement.csv"
 ---
 
 # Setup
@@ -17,17 +17,15 @@ params:
 #| label: setup
 #|
 if (!exists("params")) {
-    params <- rmarkdown::yaml_front_matter("~/Documents_Local/git/IPBES_data_tsu/Assessments/Business/IPBES_BBA_Ch4-Snowball_Pilot_1/snowball.qmd")$params
+    params <- rmarkdown::yaml_front_matter("snowball.qmd")$params
 }
 
-# library(bibtex)
+library(IPBES.R)
+
 library(openalexR)
-library(writexl)
+
 library(tibble)
 library(dplyr)
-library(ggplot2)
-library(ggraph)
-library(tidygraph)
 
 library(knitr)
 
@@ -98,7 +96,6 @@ fn <- file.path(".", "data", "snowball.xlsx")
 if (!file.exists(fn)) {
     to_xlsx(
         snowball = snowball,
-        flat_snow = flat_snow,
         xls_filename = fn
     )
 }
@@ -133,12 +130,13 @@ The column are: (the Concept columns are not that relevant at the moment)
 #| label: openalex_graph
 
 if ((list.files("figures") |> length()) < 4) {
-    x <- plot_snowball(
+    plot_snowball(
         snowball,
         name = "Snowball Pilot"
     )
 }
 ```
+
 
 ![](figures/Snowball Pilot_cited_by_count_by_year.png)
 [Right click - Download for (better quality)](figures/Snowball Pilot_cited_by_count_by_year.pdf)
