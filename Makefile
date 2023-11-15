@@ -14,12 +14,12 @@ all: $(HTML_FILES)
 	quarto render $<
 
 # Rule to render a specific .qmd file or preview it
-report: report.html
+snowball: snowball.html
 
-report.html: report.qmd
+snowball.html: snowball.qmd
 	quarto render snowball.qmd
 
-preview: report.html
+preview: snowball.html
 	quarto serve snowball.qmd
 
 # Rule to clean
