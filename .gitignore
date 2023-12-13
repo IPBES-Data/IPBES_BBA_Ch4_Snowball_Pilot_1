@@ -48,3 +48,5 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 IPBES_BBA_Ch4-Snowball_Pilot_1.code-workspace
+input/routledge_handbook/Accepted_Manuscript_Chapter28-Biodiversity_Routledge_Handbook_2021.docx
+data/snowball_2.rds

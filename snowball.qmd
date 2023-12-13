@@ -8,9 +8,16 @@ format:
         embed-resources: true
         code-fold: true
         code-summary: "Show the code"
+        grid:
+            sidebar-width: 0px
+            body-width: 4000px
+            margin-width: 200px
+            gutter-width: 1.5rem   
 params:
-    key_paper: "v2 Clement.csv"
+    key_paper: "Clement.bib"
 ---
+
+# Back to [Readme](https://IPBES-Data.github.io/IPBES_BBA_Ch4_Snowball_Pilot_1/)
 
 # Setup
 ```{r}
@@ -29,26 +36,36 @@ library(dplyr)
 
 library(knitr)
 
-list.files(
-    "R",
-    full.names = TRUE,
-    recursive = TRUE
-) |>
-    sapply(
-        FUN <- source
+library(networkD3)
+
+# list.files(
+#     "R",
+#     full.names = TRUE,
+#     recursive = TRUE
+# ) |>
+#     sapply(
+#         FUN <- source
+#     )
+
+kp_dois <- file.path("input", "key_papers", params$key_paper) |>
+    readLines() |>
+    grep(
+        pattern = "doi = ",
+        value = TRUE
+    ) |>
+    sub(
+        pattern = ".*\\{",
+        replacement = ""
+    ) |>
+    gsub(
+        pattern = "\\}.$",
+        replacement = ""
     )
-
-
-kp <- read.csv(file.path("Key Papers", params$key_paper))
 ```
-
-# Back to [Readme](https://IPBES-Data.github.io/IPBES_BBA_Ch4_Snowball_Pilot_1/)
 
 # Searches
 
-## OpenAlex
-
-### Setup OpelAnex usage and do snowball serarch
+## Setup OpenAlex usage
 
 ```{r}
 #| label: openalex_prep
@@ -60,47 +77,86 @@ if (file.exists(fn)) {
 } else {
     key_works <- oa_fetch(
         entity = "works",
-        doi = kp$DOI,
+        doi = kp_dois,
         verbose = FALSE
     )
     saveRDS(key_works, fn)
 }
+```
 
-
-ids <- openalexR:::shorten_oaid(key_works$id)
-
-fn <- file.path(".", "data", "snowball.rds")
+## Do first snowball search (S1)
+```{r}
+#| label: openalex_snowball_1
+fn <- file.path(".", "data", "snowball_1.rds")
 if (file.exists(fn)) {
-    snowball <- readRDS(fn)
+    snowball_1 <- readRDS(fn)
 } else {
-    snowball <- oa_snowball(
-        identifier = ids,
+    snowball_1 <- oa_snowball(
+        identifier = openalexR:::shorten_oaid(key_works$id),
         verbose = FALSE
     )
-    saveRDS(snowball, fn)
+    saveRDS(snowball_1, fn)
 }
 
-flat_snow <- snowball2df(snowball) |>
+flat_snow_1 <- snowball2df(snowball_1) |>
     as_tibble()
 ```
 
-### Save snowball as Excel file (`snowball_excel.xlsx`)
+The search resulted in **`r nrow(snowball_1$nodes)`** papers and **`r nrow(snowball_1$edges)`** citations, including the key-papers.
+
+## Do second snowball search (S2)
+
+For the second snowball search (S2) we use the corpus identified by S1 as the key-papers.
+
+This needs to be enabled (`eval = false` needs to be changed to `eval = true` in the following code block) as the resulting data file is to large for github and running of the snowball search
+takes several hours.
+
+```{r}
+#| label: openalex_snowball_2
+#| eval: false
+
+fn <- file.path(".", "data", "snowball_2.rds")
+if (file.exists(fn)) {
+    snowball_2 <- readRDS(fn)
+} else {
+    snowball_2 <- oa_snowball(
+        identifier = openalexR:::shorten_oaid(snowball_1$nodes$id),
+        verbose = FALSE
+    )
+    saveRDS(snowball_2, fn)
+}
+
+flat_snow_2 <- snowball2df(snowball_1) |>
+    as_tibble()
+```
+
+The search resulted in **`r paste(ifelse(exists("snowball_2"), nrow(snowball_2$nodes), 167275))`** papers and **`r paste(ifelse(exists("snowball_2"), nrow(snowball_2$edges), 225735))`** citations, including the key-papers, i.e. papers in corpus S1.
+
+# Export S1 Corpus to Excel file
+
+Only S1 can be exported to Excel due to the size of the S2 corpus.
 
 ```{r}
 #| label: openalex_excel
 #|
 
-###
-
-fn <- file.path(".", "data", "snowball.xlsx")
+fn <- file.path(".", "data", "snowball_1.xlsx")
 if (!file.exists(fn)) {
     to_xlsx(
-        snowball = snowball,
+        snowball = snowball_1,
         xls_filename = fn
     )
 }
+
+# fn <- file.path(".", "data", "snowball_2.xlsx")
+# if (!file.exists(fn)) {
+#     to_xlsx(
+#         snowball = snowball_2,
+#         xls_filename = fn
+#     )
+# }
 ```
-[To download Excel file click here](data/snowball.xlsx)
+[To download Excel file click here](data/snowball_1.xlsx)
 
 The column are: (the Concept columns are not that relevant at the moment)
 
@@ -123,37 +179,69 @@ The column are: (the Concept columns are not that relevant at the moment)
 - **institute_country**: Country of the institute
 - **abstract**: the abstract of the paper
 
+# Graphs
 
-### Graph of links between references
+## Static Citation Network Graph of the S1 Corpus
+
+
+Only S1 corpus of S1 can be graphed due to the size of the S2 corpus.
 
 ```{r}
-#| label: openalex_graph
+#| label: openalex_graph_S1
 
-if ((list.files("figures") |> length()) < 4) {
+if ((length(list.files(path = "figures", pattern = "Snowball_1_.*", recursive = TRUE))) < 4) {
     plot_snowball(
-        snowball,
-        name = "Snowball Pilot"
+        snowball_1,
+        name = "Snowball_1"
     )
 }
 ```
 
 
-![](figures/Snowball Pilot_cited_by_count_by_year.png)
-[Right click - Download for (better quality)](figures/Snowball Pilot_cited_by_count_by_year.pdf)
+![](figures/Snowball_1_cited_by_count_by_year.png)
+[Right click - Download for (better quality)](figures/Snowball_1_cited_by_count_by_year.pdf)
 
-### Identification of references with more than one edge
+## Interactive Citation Network Graph of the S1 Corpus
 
-This is the number of connections (`connection_count)`of the paper (`id`)
+```{r}
+#| label: openalex_graph_S1_interactive
+#| 
+
+nwg <- IPBES.R::plot_snowball_interactive(snowball_1)
+saveNetwork(
+    nwg, 
+    file = file.path("figures", "S1_interactive_network.html"),
+    selfcontained = TRUE
+)
+unlink(file.path("figures", "S1_interactive_network_files"), recursive = TRUE)
+nwg
+```
+
+To open the interactive graph in a standalone window [click here](figures/S1_interactive_network.html){target=_blank}.
+
+The following interactions are possible:
+
+- moving your mouse over a node, the title author and year of the paper is shown.
+- clicking on a node will open the paper in a new tab.
+- scrolling up and down with your scroll wheel zooms in and out
+- clicking on the canvas and move the mouse will move the network
+- clicking on a node and dragging it moves the node
+
+# Identification of references with more than one edge
+
+This is the number of connections (`connection_count`) of the paper (`id`)
+
+Only the corpus of S1 is shown here due to the size of the S2 corpus.
 
 ```{r}
 #| label: openalex_edgecount
 #|
-mult_edge <- flat_snow |>
+mult_edge <- flat_snow_1 |>
     select(id, connection_count) |>
     filter(connection_count > 1) |>
     arrange(desc(connection_count))
 
-links <- flat_snow |>
+links <- flat_snow_1 |>
     filter(id %in% mult_edge$id)
 
 links |>
